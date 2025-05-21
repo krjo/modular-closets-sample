@@ -1,0 +1,17 @@
+{
+  "name": "modular-closets-test",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "sass --watch assets:assets --no-source-map --style=compressed",
+    "build": "sass assets:assets --no-source-map --style=compressed"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "sass": "^1.89.0"
+  }
+}

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Modular Closets Coding Sample</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles/theme.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <header><!-- header --></header>
+  
+  <main>
+    <measure-space>
+      <button type="button" class="button button--open" data-open-dialog aria-expanded="false">Measure your space</button>
+
+      <div
+        data-measure-dialog
+        class="measure-dialog"
+        role="dialog"
+        aria-labelledby="dialog1Title">
+        <div class="overlay" data-close-dialog></div>
+        <div class="dialog-main">
+
+          <div class="dialog-inner">
+
+            <div class="measure-form">
+
+              <h2 id="dialog1Title">Measure Your Space</h2>
+                <a href="#" class="measure-link">
+                  <svg width="88" height="88" viewBox="0 0 88 88" xmlns="http://www.w3.org/2000/svg">
+                    <g id="Group">
+                        <path id="Path" fill="#000000" stroke="none" d="M 1.8125 0.002197 C 0.781789 0.099365 -0.004464 0.966919 0 2.002136 L 0 86 C 8.3e-05 87.104492 0.895457 87.999878 2 88 L 86 88 C 87.104546 87.999878 87.999916 87.104492 88 86 L 88 44.001099 C 88.010201 43.279846 87.631248 42.609009 87.008255 42.245361 C 86.385262 41.881775 85.614738 41.881775 84.991745 42.245361 C 84.368752 42.609009 83.989799 43.279846 84 44.001099 L 84 84.000122 L 4 84.000122 L 4 4.002075 L 44 4.002075 C 44.721272 4.012268 45.392162 3.633362 45.755775 3.010376 C 46.119389 2.38739 46.119389 1.616882 45.755775 0.993896 C 45.392162 0.370911 44.721272 -0.007996 44 0.002197 L 1.8125 0.002197 Z M 59.8125 0.002197 C 59.097809 0.035461 58.455193 0.447571 58.126801 1.083191 C 57.798412 1.718811 57.834156 2.481384 58.220566 3.083496 C 58.606979 3.685608 59.285332 4.035828 60 4.002075 L 81.1875 4.002075 L 36.59375 48.594727 C 35.99736 49.075256 35.727749 49.854126 35.899437 50.600525 C 36.071125 51.346924 36.653965 51.929749 37.400379 52.10144 C 38.146793 52.273132 38.925705 52.003479 39.40625 51.407104 L 84 6.814514 L 84 28.001526 C 83.989799 28.722778 84.368752 29.393616 84.991745 29.757202 C 85.614738 30.12085 86.385262 30.12085 87.008255 29.757202 C 87.631248 29.393616 88.010201 28.722778 88 28.001526 L 88 2.002136 C 87.999893 0.897644 87.104523 0.002319 86 0.002197 L 59.8125 0.002197 Z"/>
+                    </g>
+                  </svg>
+                  Measure your space
+                </a>
+
+              <form action="false">
+
+                <fieldset>
+                  <legend class="sr-only">Choose your closet shape:</legend>
+                  <div class="radio-group">
+                    <div class="radio-item">
+                      <input type="radio" id="shape-square" name="shape" value="square" checked>
+                      <label for="shape-square">Square/Rectangle</label>
+                    </div>
+                    <div class="radio-item">
+                      <input type="radio" id="shape-custom" name="shape" value="custom">
+                      <label for="shape-custom">Custom Shape</label>
+                    </div>
+                  </div>
+                </fieldset>
+
+                <fieldset>
+                  <legend>Walls</legend>
+                  <div class="input-group">
+                    <label for="wall-main">Main wall</label>
+                    <div class="input-wrapper">
+                      <input type="text" id="wall-main" name="wall-main" placeholder="-">
+                      <span></span>
+                    </div>
+                  </div>
+                  <div class="input-group">
+                    <label for="wall-side">Side wall</label>
+                    <div class="input-wrapper">
+                      <input type="text" id="wall-side" name="wall-side" placeholder="-">
+                      <span></span>
+                    </div>
+                  </div>
+                </fieldset>
+
+                <fieldset>
+                  <legend>Opening</legend>
+                  <div class="input-group">
+                    <label for="opening-width">Opening Width</label>
+                    <input type="text" id="opening-width" name="opening-width" placeholder="-">
+                  </div>
+                  <div class="input-group">
+                    <label for="opening-left">Left Side</label>
+                    <input type="text" id="opening-left" name="opening-left" placeholder="-">
+                  </div>
+                  <div class="input-group">
+                    <label for="opening-right">Right Side</label>
+                    <input type="text" id="opening-right" name="opening-right" placeholder="-">
+                  </div>
+                </fieldset>
+
+              </form>
+
+            </div>
+
+            <div class="measure-graphic">
+              <img src="assets/diagram.png" width="1037" height="736" alt="Closet diagram" class="closet-diagram">
+            </div>
+
+          </div>
+
+          <div class="dialog-actions">
+            <button type="button" class="button button--secondary">Work with a designer</button>
+            <button type="submit" class="button" disabled>
+              Continue
+              <svg width="16" height="11" viewBox="0 0 16 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M16 5.49981C16 5.3659 15.9253 5.18799 15.8496 5.10164L11.5831 0.180675C11.3839 -0.0428654 11.0612 -0.0687517 10.829 0.158082C10.6214 0.360976 10.6161 0.756435 10.8082 0.976838L14.2331 4.92104H0.533291C0.238726 4.92104 0 5.18019 0 5.49994C0 5.81968 0.238737 6.07883 0.533291 6.07883H14.2331L10.8082 10.023C10.6161 10.2433 10.6298 10.6292 10.829 10.8416C11.0392 11.0661 11.3869 11.046 11.5831 10.819L15.8496 5.89808C15.9749 5.76461 15.9979 5.63608 16 5.50006V5.49981Z" fill="white"/>
+              </svg>
+            </button>
+          </div>
+
+          <button type="button" class="button--close" data-close-dialog>
+            Close
+            <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="1.41443" width="29" height="2" rx="1" transform="rotate(45 1.41443 0)" fill="#313131"/>
+              <rect x="21.9203" y="1.41431" width="29" height="2" rx="1" transform="rotate(135 21.9203 1.41431)" fill="#313131"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </measure-space>
+  </main>
+  
+  <footer><!-- footer --></footer>
+  
+</body>
+</html>
