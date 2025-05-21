@@ -12,7 +12,6 @@
   "license": "ISC",
   "type": "commonjs",
   "dependencies": {
-    "@vercel/edge": "^1.2.1",
     "sass": "^1.89.0"
   }
 }
