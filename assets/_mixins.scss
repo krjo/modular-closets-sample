@@ -4,10 +4,3 @@
     @content;
   }
 }
-
-@mixin mq-max($breakpoint) {
-
-  @media all and (max-width: calc($breakpoint - 1px)) {
-    @content;
-  }
-}
