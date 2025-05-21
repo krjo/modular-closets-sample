@@ -39,7 +39,8 @@ legend {
   border-bottom: 1px solid $sand;
   width: 100%;
   font-size: 24px;
-  font-weight: 700;
+  font-weight: 600;
+  margin-bottom: 10px;
 }
 
 .input-group {
@@ -56,6 +57,8 @@ legend {
 
   .input-wrapper {
     position: relative;
+    display: flex;
+    justify-content: flex-end;
   }
 
   input[type="text"] {
@@ -67,24 +70,42 @@ legend {
     padding: 8px 15px;
     width: 140px;
     font-size: 16px;
+    box-sizing: border-box;
 
     &:placeholder-shown {
+
       + span {
+
         &::after {
-        content: '!!!';
+          content: url(./warning.svg);
         }
       }
     }
 
     + span {
-      position: absolute;
-      top: 50%;
-      left: 100%;
-      margin-left: 6px;
-      transform: translateY(-50%);
+      height: 100%;
+      margin-left: 8px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+
+      @include mq($desktop) {
+        position: absolute;
+        top: 0;
+        left: 100%;
+        gap: 0;
+      }
 
       &::after {
-        content: url();
+        content: url(./success.svg);
+        height: 25px;
+
+        @include mq($desktop) {
+          position: absolute;
+          top: 50%;
+          left: 0;
+          transform: translateY(-50%);
+        }
       }
     }
   }
@@ -127,6 +148,7 @@ legend {
     background-color: white;
     color: $gray;
     border-color: $gray;
+    filter: none;
 
     svg {
       display: none;
@@ -171,6 +193,32 @@ legend {
   }
 }
 
+.dialog-header {
+  padding: 1rem 1rem 0.5rem;
+
+  @include mq($desktop) {
+    padding: 3rem 0 0 2rem;
+  }
+
+  h2 {
+    margin: 1rem 0 0;
+    font-size: 20px;
+
+    @include mq($desktop) {
+      font-size: 36px;
+      margin-bottom: 1rem;
+    }
+  }
+
+  a {
+    display: none;
+
+    @include mq($desktop) {
+      display: flex;
+    }
+  }
+}
+
 .dialog-main {
   border: 1px solid $sand;
   border-radius: 30px;
@@ -179,24 +227,31 @@ legend {
   z-index: 1;
   filter: drop-shadow(0 0 0.75rem rgba(0, 0, 0, 0.15));
   position: relative;
+  max-height: 90svh;
+  overflow: auto;
 }
 
 .dialog-inner {
-  padding: 3rem 2rem 2rem;
-  display: flex;
-  gap: 3rem;
+  padding: 1rem;
 
-  h2 {
-    font-size: 36px;
-    margin-bottom: 1rem;
+  @include mq($desktop) {
+    padding: 3rem 2rem 2rem;
+    display: flex;
+    gap: 4rem;
   }
 }
 
 .dialog-actions {
-  display: flex;
+  display: grid;
   gap: 10px;
-  justify-content: flex-end;
-  padding: 0 2rem 2rem;
+  padding: 1rem;
+
+  @include mq($desktop) {
+    display: flex;
+    gap: 12px;
+    justify-content: flex-end;
+    padding: 0 2rem 2rem;
+  }
 }
 
 .measure-link {
@@ -216,28 +271,37 @@ legend {
 .closet-diagram {
   display: block;
   width: 100%;
-  max-width: 700px;
-  min-width: 500px;
   height: auto;
-  flex: 1;
+
+  @include mq($desktop) {
+    max-width: 700px;
+    min-width: 500px;
+    flex: 1;
+  }
 }
 
 .measure-form {
-  width: max-content;
   flex-shrink: 0;
 
+  @include mq($desktop) {
+    max-width: 310px;
+  }
+
   form {
-    padding-top: 2rem;
     display: grid;
     gap: 2rem;
   }
 }
 
 .measure-graphic {
-  padding: 0 4rem;
+  padding-top: 2rem;
   display: flex;
   align-items: center;
   justify-content: center;
+
+  @include mq($desktop) {
+    padding: 0 4rem 4rem 2rem;
+  }
 }
 
 .button--open {
@@ -245,19 +309,85 @@ legend {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  width: max-content;
 }
 
 .button--close {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 5px;
   font-weight: 700;
-  font-size: 24px;
+  font-size: 16px;
   appearance: none;
   padding: 0;
   border: none;
   background: none;
   position: absolute;
-  top: 2rem;
-  right: 2rem;
+  top: 1rem;
+  right: 1.25rem;
+
+  @include mq($desktop) {
+    font-size: 24px;
+    top: 2rem;
+    right: 2rem;
+    gap: 10px;
+  }
+
+  svg {
+    width: 15px;
+    height: auto;
+
+    @include mq($desktop) {
+      width: 20px;
+    }
+  }
+}
+
+.radio-group {
+  display: grid;
+  gap: 1rem;
+}
+
+.radio-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  input {
+
+    &:checked {
+
+      + label span {
+
+        &::after {
+          background-color: $orange;
+        }
+      }
+    }
+
+    + label span {
+      box-shadow: 2px 2px 7.6px 0px #00000040;
+      border: 1px solid $black;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+
+      &::after {
+        content: '';
+        border-radius: 50%;
+        width: 50%;
+        height: 50%;
+      }
+    }
+  }
+
+  label {
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+  }
 }
